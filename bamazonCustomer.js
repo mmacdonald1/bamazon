@@ -22,7 +22,7 @@ connection.connect(function(err) {
     function queryAllProducts() {
       connection.query("SELECT * FROM products", function(err, res) {
         for (var i = 0; i < res.length; i++) {
-          console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price + " | " + res[i].stock_quantity);
+          console.log("ID: " + res[i].item_id + " | Product Name: " + res[i].product_name + " | Department: " + res[i].department_name + " | Price: " + res[i].price + " | Number Available: " + res[i].stock_quantity);
         }
         console.log("-----------------------------------");
       });
@@ -60,25 +60,19 @@ connection.connect(function(err) {
 
           ])
           .then(function(answer) {
-            console.log(typeof results[0].item_id);
-            console.log(results.length);
-            console.log(parseInt(answer.item));
             var chosenItem;
         for (var i = 0; i < results.length; i++) {
           if (results[i].item_id === parseInt(answer.item)) {
             chosenItem = results[i];
           }
-//            console.log(chosenItem);
+
         }
-            console.log(chosenItem.stock_quantity);
+           
             //  determine if bid was high enough
             if (chosenItem.stock_quantity >= parseInt(answer.quantity)) {
               // bid was high enough, so update db, let the user know, and start over
-                var newQuantity = (chosenItem.stock_quantity -answer.quantity);
-                console.log(newQuantity, 'hello');
-                console.log(newQuantity)
-                console.log(chosenItem.item_id)
-
+                var newQuantity = (chosenItem.stock_quantity - parseInt(answer.quantity));
+                
               connection.query(
                 "UPDATE products SET ? WHERE ?",
                 [
@@ -86,23 +80,27 @@ connection.connect(function(err) {
                     stock_quantity: newQuantity
                   },
                   {
-                    id: chosenItem.item_id
+                    item_id: chosenItem.item_id
                   }
                 ],
 
                 function(error) {
-                  console.log(answer)
-                 var totalPrice = (answer.quantity * chosenItem.price);
+                 var totalPrice = (parseInt(answer.quantity) * chosenItem.price);
 
                   console.log("Your order will be $" + totalPrice);
-
+                  console.log("-----------------------------------");    
+                    
                 }
               );
+                queryAllProducts();
+                    chooseAndBuy();
             }
             else {
               // bid wasn't high enough, so apologize and start over
               console.log("Insufficient quantity!");
-
+                  queryAllProducts();
+                    chooseAndBuy();
+                
             }
         });
       });

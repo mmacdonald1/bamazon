@@ -122,9 +122,6 @@ function addInventory() {
             
               // bid was high enough, so update db, let the user know, and start over
                 var newQuantity = (chosenItem.stock_quantity + parseInt(answer.quantity));
-                console.log(newQuantity, 'hello');
-                console.log(newQuantity)
-                console.log(chosenItem.item_id)
 
               connection.query(
                 "UPDATE products SET ? WHERE ?",

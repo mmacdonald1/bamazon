@@ -32,5 +32,5 @@ If Add Inventory is selected, the user will be prompted on the product ID, then 
 ![Add to Inventory](https://github.com/mmacdonald1/bamazon/blob/master/screenshots/AddtoInventory_Manager_screenshot.png)
 
 If Add a Product is selected, the user will be prompted for a product name, category, price, and number units. The database will update and the updated product list will be displayed.
-s
+
 ![Add New Product](https://github.com/mmacdonald1/bamazon/blob/master/screenshots/AddNewProduct_Manager_screenshot.png)

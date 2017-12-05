@@ -20,6 +20,7 @@ If the quantity requested is not available, then the display will notify of the 
 
 The Bamazon manager app can be accessed by running the bamazonManager.js file in node. The manager is greeted with a prompt of four options to choose from. Each option ends with a prompt to choose from the intial options once again. The first option is to view all products. If chosen the app will display every product in the database. The second option is to view low inventory. If chosen the app will display all products that have less than 5 units in the database. The third option is to add inventory. If chosen the app will prompt the user on the desired product ID and the number of units they would like to add. The display will the tell the user the updated quantity of the item. The fourth option is to add a product. If chosen the app will prompt the user for product name, category, price, and number units, then display a successful input message and display the updated project list. 
 
+### Demo
 User can choose from four prompted options. If View All Products is selected, display show all products in the database.
 
 ![View All Products](https://github.com/mmacdonald1/bamazon/blob/master/screenshots/ViewAllProducts_Manager_screenshot.png)
